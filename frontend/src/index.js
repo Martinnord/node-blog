@@ -6,5 +6,8 @@ import store from './store'
 import './index.css'
 
 render(
-  <Provider store={store}><Router/></Provider>,
-   document.getElementById('root'))
+  <Provider store={store}>
+    <Router />
+  </Provider>,
+  document.getElementById('root')
+)

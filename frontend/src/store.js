@@ -7,19 +7,18 @@ import thunk from 'redux-thunk'
 // Redux middleware that allows to pass promises within the dispatch object.
 import promiseMiddleware from 'redux-promise-middleware'
 // Enables optimistic updates and dispatches pendling, fulfilled and rejected actions.
-const middlewares = [promiseMiddleware(), thunk, createLogger()]
+const middlewares = [promiseMiddleware(), thunk]
 
-if (process.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   middlewares.push(createLogger())
 }
 
-const enhancer = compose(
-  autoRehydrate(),
-  applyMiddleware(...middlewares),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(
+  rootReducers,
+  {},
+  compose(applyMiddleware(...middlewares), autoRehydrate())
 )
 
-const store = createStore(rootReducers, {}, enhancer)
 persistStore(store)
 
 export default store

@@ -8,14 +8,17 @@ const {
   deletePost
 } = require('../controllers/PostController')
 
-const authenticate = require('../controllers/auth.controller')
+// const authenticate = require('../controllers/auth.controller')
 
-router.route('/').get(getAllPosts).post(createPost) // authenticate here later
+router
+  .route('/')
+  .get(getAllPosts)
+  .post(createPost) // authenticate here later
 
 router
   .route('/:id')
   .put(updatePost)
   .get(getPostById)
-  .delete(authenticate, deletePost)
+  .delete(deletePost) //authenticate here later
 
 module.exports = router

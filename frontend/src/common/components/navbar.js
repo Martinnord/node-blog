@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Navbar, Nav, NavItem, MenuItem, DropdownButton } from 'react-bootstrap'
 import './navbar.css'
 

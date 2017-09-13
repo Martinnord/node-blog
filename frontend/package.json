@@ -25,9 +25,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description":
+    "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
-  "homepage": "https://15mano.ssis.nu/build",
   "devDependencies": {},
   "author": "Martin Nordström",
   "license": "ISC"

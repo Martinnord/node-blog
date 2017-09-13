@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import PostList from './components/postList'
 import { fetchPosts } from './redux/postsAction'
 import { Link } from 'react-router-dom'
-
-// import Navbar from '../common/components/'
 import './postsLayout.css'
 
 class PostLayout extends Component {
@@ -15,9 +13,8 @@ class PostLayout extends Component {
 
   render() {
     const posts = this.props.posts || []
-    console.log(posts)
 
-    const postList = posts.map((postContent, i) => {
+    const postList = posts.reverse().map((postContent, i) => {
       return <PostList key={i} postContent={postContent} />
     })
 
@@ -31,16 +28,13 @@ class PostLayout extends Component {
             </p>
           </Link>
         </div>
-        <div>
-          {postList}
-        </div>
+        <div>{postList}</div>
       </div>
     )
   }
 }
 
 PostLayout.propTypes = {
-  props: PropTypes.object.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
