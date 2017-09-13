@@ -13,12 +13,14 @@ app.use('/api', routes)
 
 app.get('/', (req, res) => {
   res.send('hello world')
+  console.log('hej')
 })
 
 app.listen(constants.PORT, err => {
   if (err) {
     console.log('Cannot run')
   } else {
+    console.log(process.env)
     console.log(`
       Good to go 😄
       App listening on: ${constants.PORT}
