@@ -59,7 +59,8 @@ const login = async (req, res, next) => {
 }
 
 const secret = async (req, res, next) => {
-  console.log('Heloooooo')
+  console.log('I am inside of secret')
+  res.json({ secret: 'resorce' })
 }
 
 module.exports = { signup, login, userValidate, secret }
