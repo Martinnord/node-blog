@@ -1,9 +1,16 @@
 const router = require('express').Router()
 const validate = require('express-validation')
-const { signup, userValidate } = require('../controllers/user.controller')
+const authenticate = require('../services/auth')
+const localStrategy = require('../services/auth.services')
 
-router.route('/signup', validate(userValidate.signup)).post(signup).get(signup)
+const {
+  signup,
+  login,
+  users,
+  userValidate
+} = require('../controllers/user.controller')
 
-// router.route('/user/:username').get(getUserByUsername)
+router.route('/signup', validate(userValidate.signup)).post(signup)
+router.route('/login', localStrategy).post(login)
 
 module.exports = router

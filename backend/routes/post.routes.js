@@ -1,5 +1,9 @@
 const router = require('express').Router()
 const app = require('express')
+const passport = require('passport')
+const UsersController = require('../controllers/user.controller')
+const passportConf = require('../passport')
+
 const {
   getAllPosts,
   getPostById,
@@ -8,12 +12,13 @@ const {
   deletePost
 } = require('../controllers/PostController')
 
-// const authenticate = require('../controllers/auth.controller')
+router.route('/').get(getAllPosts)
 
 router
-  .route('/')
-  .get(getAllPosts)
-  .post(createPost) // authenticate here later
+  .route('/secret')
+  .get(passport.authenticate('jwt', { session: false }), UsersController.secret)
+
+router.route('/createpost').post(createPost)
 
 router
   .route('/:id')

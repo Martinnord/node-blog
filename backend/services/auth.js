@@ -7,13 +7,15 @@ const authenticate = async accessToken => {
     if (!user) {
       throw new Error('No user matching token found')
     }
+
     jwt.verify(accessToken, constants.JWT_SECRET, (err, decoded) => {
       if (decoded !== undefined) {
       } else {
         throw new Error('Invalid token')
       }
     })
-    return { user, accessToken }
+
+    return { user, accessToken, token }
   } catch (err) {
     throw err
   }
