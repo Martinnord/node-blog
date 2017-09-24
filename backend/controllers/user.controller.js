@@ -24,7 +24,7 @@ signToken = user => {
   )
 }
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   try {
     // Creates a new user
     const newUser = await User.create(req.body)
@@ -39,7 +39,6 @@ const signup = async (req, res) => {
 
     // Generate the token
     const token = signToken(newUser)
-    console.log('token', token)
 
     // Respond with a token
     res.status(200).json({ token })
@@ -50,12 +49,13 @@ const signup = async (req, res) => {
 }
 
 const login = async (req, res, next) => {
-  try {
-    res.status(200).json(req.user)
-    return next()
-  } catch (err) {
-    res.status(500).json(err)
-  }
+  console.log('successful login')
+  // try {
+  //   res.status(200).json(req.user)
+  //   return next()
+  // } catch (err) {
+  //   res.status(500).json(err)
+  // }
 }
 
 const secret = async (req, res, next) => {

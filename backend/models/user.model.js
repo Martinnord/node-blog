@@ -40,4 +40,12 @@ UserSchema.pre('save', function(next) {
   }
 })
 
+UserSchema.methods.isValidPassword = async function(newPassword) {
+  try {
+    return await bcrypt.compare(newPassword, user.password)
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 module.exports = mongoose.model('User', UserSchema)
