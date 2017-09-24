@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const validate = require('express-validation')
-const authenticate = require('../services/auth')
-const localStrategy = require('../services/auth.services')
+// const authenticate = require('../services/auth')
+// const localStrategy = require('../services/auth.services')
 const passport = require('passport')
 const passportConf = require('../passport')
 

@@ -49,6 +49,10 @@ const signup = async (req, res, next) => {
 }
 
 const login = async (req, res, next) => {
+  // Generate token
+  const token = signToken(req.user)
+  res.status(200).json({ token })
+
   console.log('successful login')
   // try {
   //   res.status(200).json(req.user)

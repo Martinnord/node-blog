@@ -42,10 +42,10 @@ passport.use(
       if (!user) {
         return done(null, false)
       }
-      console.log('user', user)
+      console.log('user', user) // Getting output
 
       // Check if password correct
-      const isMatch = user.isValidPassword(password)
+      const isMatch = await user.isValidPassword(password)
 
       // Handle if password is not correct
       if (!isMatch) {
