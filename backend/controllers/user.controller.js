@@ -27,15 +27,23 @@ signToken = user => {
 const signup = async (req, res, next) => {
   try {
     // Creates a new user
-    const newUser = await User.create(req.body)
-    res
-      .status(201)
-      .header('DONE', newUser.accessToken)
-      .send({
-        success: true,
-        message: 'New user created',
-        newUser: newUser
-      })
+    const { username, name, password } = req.body
+
+    const foundUser = await User.findOne({ 'local.username': username })
+    if (foundUser) {
+      return res.status(403).json({ error: 'Username already in use' })
+    }
+
+    const newUser = new User({
+      method: 'local',
+      local: {
+        username: username,
+        name: name,
+        password: password
+      }
+    })
+
+    await newUser.save()
 
     // Generate the token
     const token = signToken(newUser)
@@ -54,12 +62,13 @@ const login = async (req, res, next) => {
   res.status(200).json({ token })
 
   console.log('successful login')
-  // try {
-  //   res.status(200).json(req.user)
-  //   return next()
-  // } catch (err) {
-  //   res.status(500).json(err)
-  // }
+}
+
+const googleOAuth = async (req, res, next) => {
+  // Generate token
+  console.log('called')
+  const token = signToken(req.user)
+  res.status(200).json({ token })
 }
 
 const secret = async (req, res, next) => {
@@ -67,4 +76,4 @@ const secret = async (req, res, next) => {
   res.json({ secret: 'resorce' })
 }
 
-module.exports = { signup, login, userValidate, secret }
+module.exports = { signup, login, userValidate, googleOAuth, secret }

@@ -4,6 +4,8 @@ const passport = require('passport')
 const UsersController = require('../controllers/user.controller')
 const passportConf = require('../passport')
 
+const passportProtectedRoute = passport.authenticate('jwt', { session: false })
+
 const {
   getAllPosts,
   getPostById,
@@ -14,9 +16,7 @@ const {
 
 router.route('/').get(getAllPosts)
 
-router
-  .route('/secret')
-  .get(passport.authenticate('jwt', { session: false }), UsersController.secret)
+router.route('/secret').get(passportProtectedRoute, UsersController.secret)
 
 router.route('/createpost').post(createPost)
 

@@ -1,21 +1,23 @@
 const router = require('express').Router()
 const validate = require('express-validation')
-// const authenticate = require('../services/auth')
-// const localStrategy = require('../services/auth.services')
 const passport = require('passport')
 const passportConf = require('../passport')
+
+const passportLogin = passport.authenticate('local', { session: false })
+const passportGoogle = passport.authenticate('googleToken', { session: false })
 
 const {
   signup,
   login,
   users,
-  userValidate
+  userValidate,
+  googleOAuth
 } = require('../controllers/user.controller')
 
 router.route('/signup', validate(userValidate.signup)).post(signup)
 
-router
-  .route('/login')
-  .post(passport.authenticate('local', { session: false }), login)
+router.route('/login').post(passportLogin, login)
+
+router.route('/oauth/google').post(passportGoogle, googleOAuth)
 
 module.exports = router

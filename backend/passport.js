@@ -2,6 +2,7 @@ const passport = require('passport')
 const JwtStrategy = require('passport-jwt').Strategy
 const { ExtractJwt } = require('passport-jwt')
 const LocalStrategy = require('passport-local').Strategy
+const GooglePlusTokenStrategy = require('passport-google-plus-token')
 const constants = require('./config/main')
 const User = require('./models/user.model')
 
@@ -31,12 +32,56 @@ passport.use(
   )
 )
 
+// Goolge OAuth Strategy
+passport.use(
+  'googleToken',
+  new GooglePlusTokenStrategy(
+    {
+      clientID: constants.clientID,
+      clientSecret: constants.clientSecret
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        console.log('accessToken', accessToken)
+        console.log('refreshToken', refreshToken)
+        console.log('profile', profile)
+
+        // Check if current user exists in db
+        const existingUser = await User.findOne({ 'google.id': profile.id })
+        if (existingUser) {
+          console.log('User already exists')
+          return done(null, existingUser)
+        }
+        console.log('User does not already exists')
+
+        // Create new document if new account
+
+        const newUser = new User({
+          method: 'google',
+          google: {
+            id: profile.id,
+            email: profile.emails[0].value
+          }
+        })
+
+        console.log('newUser', newUser)
+
+        await newUser.save()
+        done(null, newUser)
+      } catch (err) {
+        console.log('OJSAN')
+        done(err, false, err.message)
+      }
+    }
+  )
+)
+
 // Local Strategy
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       // Find user by username
-      const user = await User.findOne({ username })
+      const user = await User.findOne({ 'local.username': username })
 
       // No user found
       if (!user) {
