@@ -4,7 +4,7 @@ const { ExtractJwt } = require('passport-jwt')
 const LocalStrategy = require('passport-local').Strategy
 const GooglePlusTokenStrategy = require('passport-google-plus-token')
 const FacebookTokenStrategy = require('passport-facebook-token')
-const constants = require('./config/main')
+const constants = require('./config/constants')
 const User = require('./models/user.model')
 
 // JWT Strategy

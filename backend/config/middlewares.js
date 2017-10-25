@@ -6,7 +6,7 @@ const logger = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 const morgan = require('morgan')
-const constants = require('./main')
+const constants = require('./constants')
 const db = require('./database')
 const passport = require('passport')
 

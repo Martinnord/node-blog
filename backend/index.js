@@ -1,6 +1,6 @@
 const express = require('express')
 const middlewares = require('./config/middlewares')
-const constants = require('./config/main')
+const constants = require('./config/constants')
 const routes = require('./routes')
 
 // Init express

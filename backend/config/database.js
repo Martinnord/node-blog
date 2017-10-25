@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const constants = require('./main.js')
+const constants = require('./constants.js')
 
 // Remove the warning
 mongoose.Promise = global.Promise

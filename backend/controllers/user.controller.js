@@ -3,7 +3,7 @@ const Joi = require('joi')
 const router = require('express').Router()
 const _ = require('lodash')
 const jwt = require('jsonwebtoken')
-const constants = require('../config/main')
+const constants = require('../config/constants')
 
 const userValidate = {
   signup: {
@@ -72,7 +72,7 @@ const googleOAuth = async (req, res, next) => {
 }
 
 const facebookOAuth = async (req, res, next) => {
-	console.log('facebook OAuth!!')
+  console.log('facebook OAuth!!')
 }
 
 const secret = async (req, res, next) => {
