@@ -8,7 +8,7 @@ export default props => (
   <Router>
     <div>
       <Route exact path="/" component={PostLayout} />
-      <Route exact path="/createpost" component={CreatePostLayout} />
+      <Route exact path="/agerallt" component={CreatePostLayout} />
     </div>
   </Router>
 )

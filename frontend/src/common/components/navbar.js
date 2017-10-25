@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, MenuItem, DropdownButton } from 'react-bootstrap'
 import './navbar.css'
 
-class MainNavbar extends Component {
+export default class MainNavbar extends Component {
   render() {
     return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={2} className="dropdown-navbar">
-              <Link to="/createpost">Skapa Post</Link>
+              {/* <Link to="/createpost">Skapa Post</Link> */}
+              <p>FUCK OFF</p>
             </NavItem>
           </Nav>
           <Nav pullRight>
@@ -43,5 +44,3 @@ class MainNavbar extends Component {
     )
   }
 }
-
-export default MainNavbar

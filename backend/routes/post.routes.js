@@ -18,7 +18,7 @@ router.route('/').get(getAllPosts)
 
 router.route('/secret').get(passportProtectedRoute, UsersController.secret)
 
-router.route('/createpost').post(createPost)
+router.route('/agerallt').post(createPost)
 
 router
   .route('/:id')

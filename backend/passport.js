@@ -3,6 +3,7 @@ const JwtStrategy = require('passport-jwt').Strategy
 const { ExtractJwt } = require('passport-jwt')
 const LocalStrategy = require('passport-local').Strategy
 const GooglePlusTokenStrategy = require('passport-google-plus-token')
+const FacebookTokenStrategy = require('passport-facebook-token')
 const constants = require('./config/main')
 const User = require('./models/user.model')
 
@@ -75,6 +76,23 @@ passport.use(
     }
   )
 )
+
+// Facebook Strategy
+// passport.use(
+// 	'facebookToken',
+// 	new FacebookStrategy(async, (username, password, done) => {
+// 		clientID: constants.facebook.clientID,
+// 		clientSecret: constants.facebook.clientSecret
+// 	}, async (accessToken, refreshToken, profile, done) => {
+// 		try {
+// 			console.log('profile', profile)
+// 			console.log('accessToken', accessToken)
+// 			console.log('refreshToken', refreshToken)
+// 		} catch (err) {
+// 			done(err, false, err.message)
+// 		}
+// 	})
+// )
 
 // Local Strategy
 passport.use(

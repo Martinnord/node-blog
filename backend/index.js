@@ -11,11 +11,6 @@ middlewares(app)
 
 app.use('/api', routes)
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-  console.log('hej')
-})
-
 app.listen(constants.PORT, err => {
   if (err) {
     console.log('Cannot run')

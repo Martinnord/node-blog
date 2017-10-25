@@ -14,7 +14,12 @@ const defaultConfig = {
   PORT: process.env.PORT || 3001,
   JTW_SECRET: process.env.JTW_SECRET,
   clientID: process.env.clientID,
-  clientSecret: process.env.clientSecret
+  clientSecret: process.env.clientSecret,
+	
+	facebook: {
+		clientID: process.env.FBclientID,
+		clientSecret: process.env.FBclientSecret
+	}
 }
 
 function envConfig(env) {

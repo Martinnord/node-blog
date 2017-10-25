@@ -10,6 +10,7 @@ import './newPost.css'
 class CreatePostLayout extends Component {
   submit(values) {
     this.props.createPost(values)
+    alert('Tack din jävel.. Den är postad...')
   }
 
   render() {

@@ -71,6 +71,10 @@ const googleOAuth = async (req, res, next) => {
   res.status(200).json({ token })
 }
 
+const facebookOAuth = async (req, res, next) => {
+	console.log('facebook OAuth!!')
+}
+
 const secret = async (req, res, next) => {
   console.log('I am inside of secret')
   res.json({ secret: 'resorce' })

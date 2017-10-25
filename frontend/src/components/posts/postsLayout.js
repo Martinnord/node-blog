@@ -24,7 +24,7 @@ class PostLayout extends Component {
           <h1 className="title text-center">Martin's Blogg</h1>
           <Link to="/createpost">
             <p className="create-post" style={{ color: '#fff' }}>
-              Skapa en ny post
+              Ge fan i att skapa en ny post!
             </p>
           </Link>
         </div>
@@ -40,8 +40,7 @@ PostLayout.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    posts: state.fetchPosts.posts,
-    isLoading: state.fetchPostsIsLoading
+    posts: state.fetchPosts.posts
   }
 }
 
