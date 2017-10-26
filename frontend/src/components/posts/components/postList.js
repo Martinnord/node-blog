@@ -6,31 +6,24 @@ import '../postsLayout.css'
 
 class PostList extends Component {
   render() {
-    const { postContent } = this.props
+    const { post } = this.props
     return (
-      <div>
+      <div className="parent">
         <Row style={{ marginTop: '20px' }}>
-          <Col md={12}>
+          <Col className="post-content">
             <ul className="posts-list">
               <li className="posts-flex-container">
                 <div className="posts-flex-item-1">
-                  <h1 className="posts-title-text">
-                    {postContent.title}
-                  </h1>
-                  <p className="posts-sub-title-text">
-                    {postContent.content}
-                  </p>
+                  <h1 className="posts-title-text">{post.title}</h1>
+                  <p className="posts-sub-title-text">{post.content}</p>
                   <p className="post-list-content">
-                    {`Postat: ${moment(postContent.timestamp).format(
-                      'HH:mm DD/MMM'
-                    )}`}
+                    {`Postat: ${moment(post.timestamp).format('HH:mm DD/MMM')}`}
                   </p>
                 </div>
               </li>
             </ul>
           </Col>
         </Row>
-        <hr style={{ width: '50%' }} />
       </div>
     )
   }

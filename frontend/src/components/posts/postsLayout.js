@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PostList from './components/postList'
 import { fetchPosts } from './redux/postsAction'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './postsLayout.css'
 
 class PostLayout extends Component {
@@ -14,21 +14,21 @@ class PostLayout extends Component {
   render() {
     const posts = this.props.posts || []
 
-    const postList = posts.reverse().map((postContent, i) => {
-      return <PostList key={i} postContent={postContent} />
+    const postList = posts.reverse().map(post => {
+      return <PostList key={post._id} post={post} />
     })
 
     return (
       <div className="App">
         <div className="App-header">
           <h1 className="title text-center">Martin's Blogg</h1>
-          <Link to="/createpost">
+          {/* <Link to="/createpost">
             <p className="create-post" style={{ color: '#fff' }}>
               Ge fan i att skapa en ny post!
             </p>
-          </Link>
+          </Link> */}
         </div>
-        <div>{postList}</div>
+        {postList}
       </div>
     )
   }
